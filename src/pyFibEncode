@@ -1,0 +1,43 @@
+# Complete the function below.
+
+
+
+
+fibs = [1, 2]
+def mapcode(n, fibs):
+
+
+    #print("mapcode called with: " + str(n) + " " + str(fibs))
+    if (n==0):
+        return ""
+    ## extend the fibonacci sequence if necessary
+    while (n>fibs[-1]) :
+        fibs.append(fibs[-1]+fibs[-2])
+        #print(fibs)
+
+    less = filter((lambda a: a<=n), fibs) ## make list of all _<=_ fibonacci numbers
+    #print("Less : " + str(less))
+    length = len(less)  ## find the index
+
+    
+
+    remaining = n-less[-1] ## find how far we are above the lower fibonumber
+    ## find the point above which this dude could start with a '1'
+    ## boundary = less[length-1] + less[length-3]
+
+    #print("remaining : " + str(remaining))
+
+
+
+
+    temp = mapcode(remaining,less)
+    #print("temp if " + temp)
+    temp = "1" + "0"*(length-1-len(temp)) + temp
+    #print("returning if " + temp)
+    return temp
+
+def  encodeFibonacci(n):
+    
+    return (mapcode(n,fibs))
+    
+
